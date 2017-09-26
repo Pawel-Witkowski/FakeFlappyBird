@@ -78,10 +78,11 @@ public class FlappyPlayer : MonoBehaviour {
     void UpdateMoving() {
 		// Physics controls only Y axis of velocity
         body.velocity = new Vector3( movingSpeed, body.velocity.y, 0 );
-		// Additional effect inspired by Flappy Bird - rotation based on velocity
-        transform.forward = Vector3.Lerp( Vector3.right, body.velocity, rotationPercentage );
+        // Additional effect inspired by Flappy Bird - rotation based on velocity
+        transform.forward = Vector3.Lerp(Vector3.right, body.velocity, rotationPercentage);
 
-		if ( transform.position.y < assumeDeadBelowY ) {
+
+        if ( transform.position.y < assumeDeadBelowY ) {
 			Die();
 		}
     }
