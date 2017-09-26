@@ -16,6 +16,7 @@ public class ObstaclesDestroyer : MonoBehaviour {
 	}
 
     private void OnTriggerEnter(Collider other) {
-        Destroy(other.gameObject, 1f);
+        GameObject destroyedObstacle = other.gameObject.transform.parent.parent.gameObject;
+        Destroy(destroyedObstacle, 1f);
     }
 }
