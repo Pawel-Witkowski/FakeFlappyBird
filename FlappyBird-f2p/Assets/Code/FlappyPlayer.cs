@@ -12,6 +12,7 @@ public class FlappyPlayer : MonoBehaviour {
 	public float assumeDeadBelowY = -20;
 
 	public float waitDurationBeforeRestart = 3f;
+    public AudioClip[] audioClips = new AudioClip[2];
 
     public Rigidbody body {
         get;
@@ -22,6 +23,8 @@ public class FlappyPlayer : MonoBehaviour {
 		return state == State.DEAD;
 	}
 
+
+    AudioSource audioSource;
     bool inputAllowed;
 
     enum State {
@@ -33,6 +36,7 @@ public class FlappyPlayer : MonoBehaviour {
         body = GetComponent<Rigidbody>();
         state = State.INTRO;
         inputAllowed = true;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update() {
@@ -94,10 +98,19 @@ public class FlappyPlayer : MonoBehaviour {
     }
 
     void OnCollisionEnter( Collision collision ) {
-		Die();
+        if (state == State.MOVING) {
+            audioSource.clip = audioClips[1];
+            audioSource.Play();
+        }
+        Die();
     }
-
-	void Die() {
+    private void OnTriggerEnter(Collider other) {
+        if (state == State.MOVING) {
+            audioSource.clip = audioClips[0];
+            audioSource.Play();
+        }
+    }
+    void Die() {
 		inputAllowed = false;
 		state = State.DEAD;
 		body.constraints = RigidbodyConstraints.None;
