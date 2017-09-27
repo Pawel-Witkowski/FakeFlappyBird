@@ -18,6 +18,12 @@ public class FlappyPlayer : MonoBehaviour {
         get;
         private set;
 	}
+    public int points {
+        get;
+        private set;
+    }
+
+
 
 	public bool IsDead() {
 		return state == State.DEAD;
@@ -37,6 +43,8 @@ public class FlappyPlayer : MonoBehaviour {
         state = State.INTRO;
         inputAllowed = true;
         audioSource = GetComponent<AudioSource>();
+        transform.eulerAngles = new Vector3(0, 90, 0);
+        points = 0;
     }
 
     void Update() {
@@ -109,6 +117,7 @@ public class FlappyPlayer : MonoBehaviour {
         if (state == State.MOVING) {
             audioSource.clip = audioClips[0];
             audioSource.Play();
+            points++;
         }
     }
     void Die() {
