@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: dced7cd299b303140acc8941a14463d0
-timeCreated: 1506517398
+guid: 2e8b12e7a9c04374f8efbba4f5eb0a3a
+timeCreated: 1506521716
 licenseType: Free
 TrueTypeFontImporter:
   serializedVersion: 4
@@ -9,9 +9,9 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontName: Chuck Noon
+  fontName: Muskaters
   fontNames:
-  - Chuck Noon
+  - Muskaters
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
